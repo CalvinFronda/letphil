@@ -10,3 +10,9 @@ The main functionality is in `handleMoodChange`. We need a way to keep the `rece
 
 - Accurately shows the correct number day. We are simply keeping a counter and incrementing todays day + 1 so it won't know if that day is real.
 - Stores any data. No database is saving these previous moods. Refreshing the page will reset the app.
+
+
+
+
+https://github.com/user-attachments/assets/64b1c531-b0ba-4f71-999a-c0200e2d621e
+
