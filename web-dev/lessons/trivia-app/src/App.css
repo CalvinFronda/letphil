@@ -16,6 +16,20 @@
   text-align: center;
 }
 
+.history-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.history-list_result:nth-child(even) {
+  background-color: bisque;
+}
+
+.history-list_result:nth-child(odd) {
+  background-color: white;
+}
 .question {
   width: 300px;
   text-align: center;
@@ -30,4 +44,12 @@
 
 .results {
   text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
 }

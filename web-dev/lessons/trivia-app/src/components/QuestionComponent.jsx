@@ -18,8 +18,12 @@ export function QuestionComponent({ question, onAnswerSelect }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCountDown((prevCount) => {
-        if (prevCount <= 0) {
+        if (prevCount <= 1) {
           clearInterval(timer);
+          // if the timer gets to 0 you will get the answer wrong
+          question.correct_answer === "True"
+            ? handleAnswerSelect("False")
+            : handleAnswerSelect("True");
           return 0;
         }
         return prevCount - 1;

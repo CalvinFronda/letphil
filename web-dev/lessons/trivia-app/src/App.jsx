@@ -13,11 +13,15 @@ const GAME_STATES = {
 };
 
 function App() {
+  // Game states
   const [gameStart, setGameStart] = useState(false);
-  const [gameState, setGameState] = useState(GAME_STATES.HOME); // 0, 1, 2
+  const [gameState, setGameState] = useState(GAME_STATES.HOME); // GAME_STATES
   const [gameScore, setGameScore] = useState({ correct: 0, incorrect: 0 });
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+  // History States
+  const [gameHistory, setGameHistory] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
+  // Questions States
   const [questionAmount, setQuestionAmount] = useState(10);
   const [inputError, setInputError] = useState(false);
   const [difficult, setDifficult] = useState("easy");
@@ -39,15 +43,20 @@ function App() {
       }));
       setQuestionAmount((prev) => prev - 1);
     } else {
-      console.log("User guessed wrong");
       setGameScore((prev) => ({
         ...prev,
         incorrect: prev.incorrect + 1,
       }));
       setQuestionAmount((prev) => prev - 1);
     }
+    const formatData = {
+      question: question[currentQuestionIndex].question,
+      correct_answer: question[currentQuestionIndex].correct_answer,
+      your_answer: answer,
+    };
+    setGameHistory((prev) => [...prev, formatData]);
 
-    //Move to the next question or end the game
+    // Move to the next question or end the game
     if (currentQuestionIndex < question.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
@@ -105,6 +114,7 @@ function App() {
     setGameScore({ correct: 0, incorrect: 0 });
     setCurrentQuestionIndex(0);
     setGameStart(false);
+    setQuestionAmount(10);
   };
 
   return (
@@ -143,17 +153,39 @@ function App() {
               ))}
             </select>
           </div>
-          <StartComponent
-            token={token}
-            disabled={inputError}
-            onClick={() => {
-              setGameStart(true);
-              fetchQuestions();
-            }}
-          />
+          <div className="flex flex-row">
+            <StartComponent
+              token={token}
+              disabled={inputError}
+              onClick={() => {
+                setGameStart(true);
+                fetchQuestions();
+              }}
+            />
+            {gameHistory.length >= 1 && (
+              <div className="start">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => setShowHistory(!showHistory)}
+                >
+                  History
+                </button>
+              </div>
+            )}
+          </div>
         </>
       )}
-
+      {showHistory && (
+        <div className="history-list ">
+          {gameHistory.map((game, i) => (
+            <div key={i} className="history-list_result">
+              <p>Question: {game.question}</p>
+              <p>Your Answer: {game.your_answer}</p>
+              <p>Correct Answer: {game.correct_answer}</p>
+            </div>
+          ))}
+        </div>
+      )}
       {gameStart && (
         <div>
           <div>

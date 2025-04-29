@@ -12,8 +12,3 @@
 - Score tracking
 - Timer for each question
 - Final score display
-
-# Todo
-
-- History of games
-- Timer 0 moves to next question
