@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+select {
+  background: #eee;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  transition: 0.4s;
+  outline-style: none;
+}
+
+select:hover,
+select:focus {
+  background: #ddd;
+}
+::picker(select) {
+  border: none;
+}
+
+.option__container-mb {
+  margin-bottom: 12px;
+}
+
+.option__container-mt {
+  margin-top: 12px;
+}
+
+.inline-input {
+  margin: 0 8px;
+  padding: 4px 8px;
+  width: 60px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.inline-input.error {
+  border-color: #dc3545;
+  outline-color: #dc3545;
+}
+
+.inline-input.error:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: #dc3545;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+}
