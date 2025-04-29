@@ -6,23 +6,28 @@
   height: 100vh;
 }
 
+.start,
+.question,
+.results {
+  padding: 20px;
+}
+
 .start {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  text-align: center;
 }
 
 .question {
-  padding: 10px;
   width: 300px;
   text-align: center;
 }
 
-.action {
+.question > div {
+  padding-top: 10px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 10px;
+}
+
+.results {
+  text-align: center;
 }
