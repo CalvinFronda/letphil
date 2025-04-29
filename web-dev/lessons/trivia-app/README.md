@@ -14,5 +14,9 @@
 - Final score display
 
 
-https://github.com/user-attachments/assets/9cb3c5b1-9a74-4e8a-9945-580b484636a1
+
+# Demo
+
+
+https://github.com/user-attachments/assets/2c52d426-0bfa-4dc7-a9f0-42f6d7c0eac3
 
